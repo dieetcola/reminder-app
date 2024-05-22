@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import "./globals.css";
 
 import Link from "next/link";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "Kinde Auth",
@@ -17,7 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <main>
+          {children}
+          <Toaster />
+        </main>
         <footer className="footer">
           <div className="container">
             <strong className="text-heading-2">KindeAuth</strong>

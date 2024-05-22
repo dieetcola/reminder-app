@@ -35,6 +35,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import { toast } from "./ui/use-toast";
+import { useRouter } from "next/navigation";
+import { createCollection } from "../../actions/collection";
 
 interface Props {
   open: boolean;
@@ -42,12 +45,35 @@ interface Props {
 }
 
 export default function CollectionSheet({ open, onOpenChange }: Props) {
+  const router = useRouter();
+
   const form = useForm<createCollectionSchemaType>({
     resolver: zodResolver(createCollectionSchema),
     defaultValues: {},
   });
 
-  const onSubmit = async (data: createCollectionSchemaType) => {};
+  const onSubmit = async (data: createCollectionSchemaType) => {
+    try {
+      await createCollection(data);
+
+      // Close the sheet
+      openChangeWrapper(false);
+      router.refresh();
+
+      toast({
+        title: "Success",
+        description: "Collection created successfully!",
+      });
+    } catch (e: any) {
+      // Show toast
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later",
+        variant: "destructive",
+      });
+      console.log("Error while creating collection", e);
+    }
+  };
 
   const openChangeWrapper = (open: boolean) => {
     form.reset();
