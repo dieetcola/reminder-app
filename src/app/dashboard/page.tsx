@@ -1,21 +1,16 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { prisma } from "../../../lib/prisma";
-
+import CreateButton from "@/components/create-button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 export default function Dashboard() {
   return (
     <div className="container">
       <div className="card start-hero">
-        <p className="text-body-2 start-hero-intro">Woohoo!</p>
-        <p className="text-display-2">
-          Your authentication is all sorted.
-          <br />
-          Build the important stuff.
-        </p>
+        <CollectionList />
       </div>
       <section className="next-steps-section">
         <h2 className="text-heading-1">Next steps for you</h2>
       </section>
-      <CollectionList />
     </div>
   );
 }
@@ -33,8 +28,13 @@ async function CollectionList() {
   if (collections.length === 0) {
     return (
       <div className="flex flex-col gap-5">
-        <p>There are no collections yet!</p>
-        <p>Create a collection to get started</p>
+        <Alert>
+          <AlertTitle>There are no collections yet!</AlertTitle>
+          <AlertDescription>
+            Create a collection to get started
+          </AlertDescription>
+        </Alert>
+        <CreateButton />
       </div>
     );
   }
