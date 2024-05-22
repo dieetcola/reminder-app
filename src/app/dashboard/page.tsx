@@ -2,6 +2,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { prisma } from "../../../lib/prisma";
 import CreateButton from "@/components/create-button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import CollectionCard from "@/components/collection-card";
 export default function Dashboard() {
   return (
     <div className="container">
