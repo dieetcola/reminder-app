@@ -4,14 +4,15 @@ import { Collapsible, CollapsibleTrigger } from "./ui/collapsible";
 import { Button } from "./ui/button";
 import { CaretDownIcon, CaretUpIcon, TrashIcon } from "@radix-ui/react-icons";
 
-import { Collection } from "@prisma/client";
+import { Collection, Task } from "@prisma/client";
 import { CollectionColor, CollectionColors } from "../../lib/constants";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  collection: Collection;
+  collection: Collection & {
+    tasks: Task[];
+  };
 }
-
 function CollectionCard({ collection }: Props) {
   const [isOpen, setIsOpen] = useState(true);
 
