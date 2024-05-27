@@ -6,7 +6,7 @@ import CollectionCard from "@/components/collection-card";
 
 export default function Dashboard() {
   return (
-    <div className="container">
+    <div className="py-14">
       <CollectionList />
     </div>
   );
@@ -41,7 +41,7 @@ async function CollectionList() {
 
   return (
     <>
-      <CreateButton />{" "}
+      <CreateButton />
       <div className="flex flex-col gap-4 mt-6">
         {collections.map((collection) => (
           <CollectionCard key={collection.id} collection={collection} />

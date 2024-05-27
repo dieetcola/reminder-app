@@ -16,8 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>
+        <main className="w-8/12 m-auto py-4">
+          <Header />
           {children}
           <Toaster />
         </main>

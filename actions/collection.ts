@@ -1,8 +1,8 @@
 "use server";
 
-import { prisma } from "../lib/prisma";
 import { createCollectionSchemaType } from "../schema/createCollection";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { prisma } from "../lib/prisma";
 
 export async function createCollection(form: createCollectionSchemaType) {
   const { getUser } = getKindeServerSession();
