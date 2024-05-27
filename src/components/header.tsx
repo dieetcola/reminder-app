@@ -5,6 +5,7 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Image from "next/image";
 
 export default async function Header() {
   const { isAuthenticated, getUser } = getKindeServerSession();
@@ -29,9 +30,11 @@ export default async function Header() {
           ) : (
             <div className="grid grid-cols-[auto_1fr] items-center gap-4">
               {user?.picture ? (
-                <img
+                <Image
                   className="flex rounded-3xl w-12"
                   src={user?.picture}
+                  width={200}
+                  height={200}
                   alt="user profile avatar"
                   referrerPolicy="no-referrer"
                 />
