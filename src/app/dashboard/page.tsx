@@ -3,15 +3,11 @@ import { prisma } from "../../../lib/prisma";
 import CreateButton from "@/components/create-button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import CollectionCard from "@/components/collection-card";
+
 export default function Dashboard() {
   return (
     <div className="container">
-      <div className="card start-hero">
-        <CollectionList />
-      </div>
-      <section className="next-steps-section">
-        <h2 className="text-heading-1">Next steps for you</h2>
-      </section>
+      <CollectionList />
     </div>
   );
 }

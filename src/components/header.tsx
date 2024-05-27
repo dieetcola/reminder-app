@@ -16,7 +16,10 @@ export default async function Header() {
         <div>
           {!(await isAuthenticated()) ? (
             <>
-              <LoginLink className="btn btn-ghost sign-in-btn">
+              <LoginLink
+                postLoginRedirectURL="/dashboard"
+                className="btn btn-ghost sign-in-btn"
+              >
                 Sign in
               </LoginLink>
               <RegisterLink className="btn btn-dark">Sign up</RegisterLink>
